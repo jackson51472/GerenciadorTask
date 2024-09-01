@@ -1,12 +1,10 @@
-import {Inject, Injectable} from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import {User} from "./entities/user.entity";
-import {Repository} from "typeorm";
+import { User } from './entities/user.entity';
+import { Repository } from 'typeorm';
 @Injectable()
 export class UserService {
-
-
   constructor(
     @Inject('USER_REPOSITORY')
     private userRepository: Repository<User>,
@@ -17,7 +15,7 @@ export class UserService {
   }
 
   create(data: CreateUserDto) {
-    let user = new User()
+    const user = new User();
     user.nome = data.nome;
     this.userRepository.save(user);
     return 'This action adds a new user';
@@ -29,7 +27,7 @@ export class UserService {
     if (user) {
       return `This action returns the name: ${user.nome}`;
     } else {
-      return "User not found";
+      return 'User not found';
     }
   }
 
@@ -43,7 +41,7 @@ export class UserService {
     const user = await this.userRepository.findOne({ where: { id } });
 
     if (!user) {
-      return`User with ID #${id} not found`;
+      return `User with ID #${id} not found`;
     }
 
     await this.userRepository.remove(user);
