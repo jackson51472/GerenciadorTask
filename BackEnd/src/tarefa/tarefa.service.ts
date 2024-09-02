@@ -15,19 +15,39 @@ export class TarefaService {
     return this.tarefaRepository.find();
   }
 
-  create(createTarefaDto: CreateTarefaDto) {
-    return 'This action adds a new tarefa';
+  create(dtoCreate: CreateTarefaDto) {
+    const tarefa = new Tarefa();
+    tarefa.user = dtoCreate.user;
+    tarefa.descricao = dtoCreate.descricao;
+    tarefa.titulo = dtoCreate.titulo;
+    tarefa.status = dtoCreate.status;
+    this.tarefaRepository.save(tarefa);
+    return 'Tarefa salva com sucesso';
   }
 
   findOne(id: number) {
     return `This action returns a #${id} tarefa`;
   }
 
-  update(id: number, updateTarefaDto: UpdateTarefaDto) {
+  async update(id: number, updateTarefaDto: UpdateTarefaDto) {
+    await this.tarefaRepository.update(id, {
+      titulo: updateTarefaDto.titulo,
+      descricao: updateTarefaDto.descricao,
+      status: updateTarefaDto.status,
+      user: updateTarefaDto.user,
+    });
     return `This action updates a #${id} tarefa`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
+    const tarefa = await this.tarefaRepository.findOne({ where: { id } });
+
+    if (!tarefa) {
+      return `Tarefa com o ID #${id} não foi encontrado.`;
+    }
+
+    await this.tarefaRepository.remove(tarefa);
+
     return `This action removes a #${id} tarefa`;
   }
 }

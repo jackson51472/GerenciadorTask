@@ -14,9 +14,11 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  create(data: CreateUserDto) {
+  create(dtoCreate: CreateUserDto) {
     const user = new User();
-    user.nome = data.nome;
+    user.nome = dtoCreate.nome;
+    user.password = dtoCreate.password;
+    user.login = dtoCreate.login;
     this.userRepository.save(user);
     return 'This action adds a new user';
   }
@@ -32,7 +34,11 @@ export class UserService {
   }
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<string> {
-    await this.userRepository.update(id, { nome: updateUserDto.nome });
+    await this.userRepository.update(id, {
+      nome: updateUserDto.nome,
+      password: updateUserDto.password,
+      login: updateUserDto.login,
+    });
 
     return `This action updates the user with ID #${id} to the name ${updateUserDto.nome}`;
   }
@@ -41,11 +47,9 @@ export class UserService {
     const user = await this.userRepository.findOne({ where: { id } });
 
     if (!user) {
-      return `User with ID #${id} not found`;
+      return `User com o ID #${id} não foi encontrado.`;
     }
-
     await this.userRepository.remove(user);
-
     return `This action removes the user with ID #${id}`;
   }
 }
