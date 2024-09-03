@@ -1,0 +1,49 @@
+.main-head {
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    padding: 0 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.head-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.head-nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.head-nav li {
+    margin: 0 10px;
+}
+
+.head-nav a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.head-nav svg {
+    fill: #fff;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+
+.head-nav span {
+    font-size: 16px;
+}
+
+.wrap-all-the-things {
+    height: 100px; /* Ajuste conforme necessário */
+}
