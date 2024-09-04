@@ -1,14 +1,16 @@
-import NavBar from "./component/NavBar";
-import Sidebar from "./component/Sidebar"; // Para Bootstrap 5
+import React from 'react';
+import TaskList from './component/TaskList';
+import './css/Tarefa.scss';
 
-
-function Tarefa() {
+const Tarefas = () => {
     return (
-        <div className="App">
-            <NavBar />
-            <Sidebar/>
+        <div className="tarefas-container">
+            <div className="tarefas-wrapper">
+                <h2 className="tarefas-title">Gerenciar Tarefas</h2>
+                <TaskList />
+            </div>
         </div>
     );
-}
+};
 
-export default Tarefa;
+export default Tarefas;

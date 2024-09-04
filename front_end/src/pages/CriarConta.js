@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import './css/Conta.scss';
+import '../css/CriarConta.css';
 
-const Conta = () => {
+const CriarConta = () => {
     const [formData, setFormData] = useState({
-        nome: 'example',
-        email: 'example@example.com',
+        nome: '',
+        email: '',
         senha: '',
-        novaSenha: '',
-        confirmarNovaSenha: ''
+        confirmacaoSenha: ''
     });
 
     const handleChange = (e) => {
@@ -19,14 +18,15 @@ const Conta = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Dados atualizados:', formData);
+        // Lógica para enviar dados do formulário
+        console.log('Dados do formulário:', formData);
     };
 
     return (
-        <div className="configuracoes-conta-container">
-            <div className="configuracoes-conta-wrapper">
-                <h2 className="configuracoes-conta-title">Configurações da Conta</h2>
-                <form className="configuracoes-conta-form" onSubmit={handleSubmit}>
+        <div className="criar-conta-container">
+            <div className="criar-conta-wrapper">
+                <h2 className="criar-conta-title">Criar Conta</h2>
+                <form className="criar-conta-form" onSubmit={handleSubmit}>
                     <div className="input-group">
                         <label htmlFor="nome">Nome</label>
                         <input
@@ -50,7 +50,7 @@ const Conta = () => {
                         />
                     </div>
                     <div className="input-group">
-                        <label htmlFor="senha">Senha Atual</label>
+                        <label htmlFor="senha">Senha</label>
                         <input
                             type="password"
                             id="senha"
@@ -61,30 +61,21 @@ const Conta = () => {
                         />
                     </div>
                     <div className="input-group">
-                        <label htmlFor="novaSenha">Nova Senha</label>
+                        <label htmlFor="confirmacaoSenha">Confirmar Senha</label>
                         <input
                             type="password"
-                            id="novaSenha"
-                            name="novaSenha"
-                            value={formData.novaSenha}
+                            id="confirmacaoSenha"
+                            name="confirmacaoSenha"
+                            value={formData.confirmacaoSenha}
                             onChange={handleChange}
+                            required
                         />
                     </div>
-                    <div className="input-group">
-                        <label htmlFor="confirmarNovaSenha">Confirmar Nova Senha</label>
-                        <input
-                            type="password"
-                            id="confirmarNovaSenha"
-                            name="confirmarNovaSenha"
-                            value={formData.confirmarNovaSenha}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <button type="submit" className="configuracoes-conta-button">Salvar Alterações</button>
+                    <button type="submit" className="criar-conta-button">Criar Conta</button>
                 </form>
             </div>
         </div>
     );
 };
 
-export default Conta;
+export default CriarConta;
