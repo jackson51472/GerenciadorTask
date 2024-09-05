@@ -1,49 +1,53 @@
-// src/components/Login.jsx
 import React, { useState } from 'react';
-import './css/Login.css';
+import axios from 'axios';
+import './css/Login.css'; // Arquivo de estilo para a página de login
 
 const Login = () => {
-    const [email, setEmail] = useState('');
+    const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-    const handleLogin = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Simulação de login, você pode adicionar sua lógica aqui.
-        alert(`Login realizado com o e-mail: ${email}`);
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, {
+            login, // Certifique-se de usar "username" em vez de "email"
+            password,
+            });
+            localStorage.setItem('access_token', response.data.access_token);
+            window.location.href = '/'; // Redireciona após o login
+        } catch (err) {
+            setError('Login ou senha inválidos.');
+        }
     };
 
     return (
         <div className="login-container">
-            <div className="login-wrapper">
-                <h2 className="login-title">Bem-vindo de volta!</h2>
-                <form onSubmit={handleLogin} className="login-form">
-                    <div className="input-group">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="password">Senha</label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <button type="submit" className="login-button">Entrar</button>
-                    <div className="login-options">
-                        <a href="#forgot-password">Esqueceu a senha?</a>
-                        <a href="#signup">Criar conta</a>
-                    </div>
-                </form>
-            </div>
+            <h2>Login</h2>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="login">Login</label>
+                    <input
+                        type="text"
+                        id="login"
+                        value={login}
+                        onChange={(e) => setLogin(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="password">Senha</label>
+                    <input
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </div>
+                {error && <p className="error">{error}</p>}
+                <button type="submit">Login</button>
+            </form>
         </div>
     );
 };

@@ -1,61 +1,37 @@
-import React, { useState } from 'react';
-import TaskForm from './TaskForm';
-import TaskItem from './TaskItem';
-import '../css/Tarefa.scss';
+import React, { useEffect, useState } from 'react';
+import { getTarefas } from '../../service/tarefaService';
 
 const TaskList = () => {
-    const [tasks, setTasks] = useState([]);
-    const [editIndex, setEditIndex] = useState(null);
-    const [initialData, setInitialData] = useState('');
+    const [tarefas, setTarefas] = useState([]);
 
-    const handleAddTask = (taskName) => {
-        setTasks([...tasks, { nome: taskName, concluida: false }]);
-    };
+    useEffect(() => {
+        const fetchTarefas = async () => {
+            try {
+                const tarefasData = await getTarefas();
+                setTarefas(tarefasData);
+            } catch (error) {
+                console.error('Erro ao buscar tarefas:', error);
+            }
+        };
 
-    const handleEditTask = (index, taskName) => {
-        const updatedTasks = tasks.map((task, i) =>
-            i === index ? { ...task, nome: taskName } : task
-        );
-        setTasks(updatedTasks);
-        setEditIndex(null);
-        setInitialData('');
-    };
-
-    const handleDeleteTask = (index) => {
-        setTasks(tasks.filter((_, i) => i !== index));
-    };
-
-    const handleToggleConcluida = (index) => {
-        const updatedTasks = tasks.map((task, i) =>
-            i === index ? { ...task, concluida: !task.concluida } : task
-        );
-        setTasks(updatedTasks);
-    };
-
-    const handleEditClick = (index) => {
-        setEditIndex(index);
-        setInitialData(tasks[index].nome);
-    };
+        fetchTarefas();
+    }, []);
 
     return (
-        <div className="task-list-container">
-            <TaskForm
-                onAddTask={handleAddTask}
-                onEditTask={handleEditTask}
-                editIndex={editIndex}
-                initialData={initialData}
-            />
-            <ul className="task-list">
-                {tasks.map((task, index) => (
-                    <TaskItem
-                        key={index}
-                        task={task}
-                        index={index}
-                        onEdit={handleEditClick}
-                        onDelete={handleDeleteTask}
-                        onToggle={handleToggleConcluida}
-                    />
-                ))}
+        <div>
+            <h2>Lista de Tarefas</h2>
+            <ul>
+                {tarefas.length > 0 ? (
+                    tarefas.map((tarefa) => (
+                        <li key={tarefa.id}>
+                            <h3>{tarefa.titulo}</h3>
+                            <p>{tarefa.descricao}</p>
+                            <p>Status: {tarefa.status}</p>
+                        </li>
+                    ))
+                ) : (
+                    <p>Não há tarefas disponíveis.</p>
+                )}
             </ul>
         </div>
     );
