@@ -1,13 +1,17 @@
-// src/auth/auth.controller.ts
-import { Controller, Post, Body } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { AuthResponseDto } from './auth.dto';
 
-@Controller('auth') // Aqui definimos a rota base "/auth"
+@Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('login') // Aqui definimos a rota "/login" dentro de "/auth"
-  async login(@Body() loginDto: { username: string; password: string }) {
-    return this.authService.login(loginDto);
+  @Post('login')
+  async signIn(
+    @Body('username') username: string,
+    @Body('password') password: string,
+  ): Promise<AuthResponseDto> {
+    return this.authService.signIn(username, password);
   }
 }
+

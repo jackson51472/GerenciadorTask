@@ -1,34 +1,33 @@
-// src/auth/auth.service.ts
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { UsersService } from '../users/users.service';
+import { ConfigService } from '@nestjs/config';
+import { AuthResponseDto } from './auth.dto';
+import { compareSync as bcryptCompareSync } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import * as bcrypt from 'bcrypt';
-import { UserService } from '../user/user.service';
-import { JwtPayload } from './jwt-payload.interface';
 
 @Injectable()
 export class AuthService {
+  private jwtExpirationTimeInSeconds: number;
+
   constructor(
-    private readonly userService: UserService,
+    private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
-  ) {}
-
-  async validateUser(username: string, password: string): Promise<any> {
-    const user = await this.userService.findByUsername(username);
-
-    if (user && (await bcrypt.compare(password, user.password))) {
-      const { password, ...result } = user;
-      return result;
-    }
-    return null;
+    private readonly configService: ConfigService,
+  ) {
+    this.jwtExpirationTimeInSeconds = +this.configService.get<number>(
+      'JWT_EXPIRATION_TIME',
+    );
   }
 
-  async login(user: any) {
-    const payload: JwtPayload = {
-      username: user.username, // Nome de login do usuário
-      sub: user.id, // O "sub" representa o ID do usuário
-    };
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
+  async signIn(username: string, password: string): Promise<AuthResponseDto> {
+    const foundUser = await this.usersService.findByUserName(username);
+    if (!foundUser || !bcryptCompareSync(password, foundUser.password)) {
+      throw new UnauthorizedException();
+    }
+
+    const payload = { sub: foundUser.id, username: foundUser.username };
+
+    const token = this.jwtService.sign(payload);
+    return { token, expiresIn: this.jwtExpirationTimeInSeconds };
   }
 }
