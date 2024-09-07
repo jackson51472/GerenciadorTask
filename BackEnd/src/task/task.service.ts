@@ -96,6 +96,7 @@ export class TaskService {
       description: taskDto.description,
       expirationDate: taskDto.expirationDate,
       status: taskDto.status.toString(),
+      user: taskDto.user,
     };
   }
 }
