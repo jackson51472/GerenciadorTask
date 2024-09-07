@@ -79,7 +79,7 @@ export class UsersService {
 
     if (!result.affected) {
       throw new HttpException(
-        `User with id '${id}' not found`,
+        `User with id ${id} not found`,
         HttpStatus.BAD_REQUEST,
       );
     }
