@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { UserEntity } from './user.entity';
 
 @Entity({ name: 'tarefa' })
 export class TaskEntity {
@@ -16,4 +17,7 @@ export class TaskEntity {
 
   @Column({ type: 'datetime', name: 'expiration_date' })
   expirationDate: Date;
+
+  @ManyToOne(() => TaskEntity, (task) => task.user)
+  user: UserEntity;
 }

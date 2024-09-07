@@ -17,6 +17,7 @@ export class TaskService {
       description: task.description,
       expirationDate: task.expirationDate,
       status: TaskStatusEnum.TO_DO,
+      user: task.user,
     };
 
     const createdTask = await this.taskRepository.save(taskToSave);
@@ -85,6 +86,7 @@ export class TaskService {
       description: taskEntity.description,
       expirationDate: taskEntity.expirationDate,
       status: TaskStatusEnum[taskEntity.status],
+      user: taskEntity.user,
     };
   }
 

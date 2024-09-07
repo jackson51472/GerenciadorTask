@@ -7,6 +7,7 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
+import { UserEntity } from '../db/entities/user.entity';
 
 export enum TaskStatusEnum {
   TO_DO = 'TO_DO',
@@ -34,6 +35,8 @@ export class TaskDto {
 
   @IsDateString()
   expirationDate: Date;
+
+  user: UserEntity;
 }
 
 export interface FindAllParameters {

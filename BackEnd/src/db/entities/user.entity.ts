@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
+import { TaskEntity } from './task.entity';
 
 @Entity({ name: 'user' })
 export class UserEntity {
@@ -10,4 +11,7 @@ export class UserEntity {
 
   @Column({ type: 'varchar', name: 'password_hash' })
   passwordHash: string;
+
+  @OneToOne(() => TaskEntity, (task) => task.user)
+  task: TaskEntity;
 }
