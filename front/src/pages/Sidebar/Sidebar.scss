@@ -1,0 +1,84 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 125px;
+  height: 100vh;
+  background-color: #575551;
+  color: #E3DDD5;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s;
+  overflow: hidden;
+  border-right: 1px solid #000000;
+  z-index: 1000;
+  box-shadow: -16px 31px 24px 0px rgba(0, 0, 0, 0.27);
+}
+
+.sidebar.collapsed {
+  width: 50px;
+}
+
+.sidebar .toggle-button {
+  position: absolute;
+  top: 20px;
+  right: -5px;
+  background-color: #555;
+  color: #E3DDD5;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: right 0.3s;
+  z-index: 1100;
+}
+
+.sidebar .toggle-button:hover {
+  background-color: #444;
+}
+
+.sidebar h2 {
+  display: block;
+}
+
+.sidebar.collapsed h2 {
+  display: none;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  padding-top: 40px;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  color: #E3DDD5;
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.sidebar.collapsed ul li a {
+  padding-left: 10px;
+}
+
+.sidebar ul li a .icon {
+  font-size: 20px;
+  margin-right: 0;
+}
+
+.sidebar.collapsed ul li a .icon {
+  margin: 0 auto;
+}

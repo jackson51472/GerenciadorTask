@@ -1,0 +1,47 @@
+.right-user {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  background-color: #D7D2CB;
+  padding: 10px 15px;
+  border-radius: 152px 0px 153px 19px;
+  box-shadow: -16px 31px 24px 0px rgba(0, 0, 0, 0.27);
+  z-index: 1000;
+  border: 0.1px solid #000000;
+}
+
+.user-icon {
+  font-size: 24px;
+  margin-right: 12px;
+  color: #000000;
+}
+
+.username {
+  font-size: 16px;
+  color: #000000;
+  margin-right: 20px;
+}
+
+.logout-button {
+  background-color: #dc3545;
+  border: none;
+  border-radius: 5px;
+  color: #E3DDD5;
+  cursor: pointer;
+  padding: 5px 12px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+.logout-icon {
+  margin-right: 8px;
+  font-size: 18px;
+}

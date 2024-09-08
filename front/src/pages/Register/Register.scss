@@ -1,0 +1,81 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa 100% da altura da visualização */
+  background-color: #E3DDD5; /* Cor de fundo padrão */
+}
+
+.register-box {
+  background-color: #D7D2CB; /* Cor de fundo da caixa */
+  border: 2px solid #BDB8B1; /* Cor da borda */
+  border-radius: 10px; /* Bordas arredondadas */
+  padding: 20px;
+  box-shadow: -16px 31px 24px 0px rgba(0, 0, 0, 0.27);
+  width: 100%;
+  max-width: 500px; /* Largura máxima da caixa */
+  display: flex;
+  flex-direction: column; /* Alinha o conteúdo verticalmente */
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+}
+
+.register-box h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #575551;
+  text-align: center; /* Centraliza o título */
+}
+
+.register-box form {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Garante que o formulário ocupe toda a largura da caixa */
+  align-items: center; /* Centraliza os itens do formulário horizontalmente */
+}
+
+.register-box .form-group {
+  display: flex;
+  align-items: center; /* Alinha o conteúdo verticalmente no centro */
+  margin-bottom: 15px; /* Espaçamento entre os campos */
+  width: 100%;
+  max-width: 400px; /* Largura máxima dos grupos de formulário */
+}
+
+.register-box label {
+  margin-right: 10px; /* Espaço entre o rótulo e o campo de entrada */
+  font-size: 14px;
+  color: #575551;
+  width: 150px; /* Largura fixa para o rótulo */
+  text-align: right; /* Alinha o texto à direita */
+}
+
+.register-box input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #575551;
+  border-radius: 5px;
+  width: 100%; /* Faz o input ocupar toda a largura disponível */
+}
+
+.register-box button {
+  padding: 10px;
+  font-size: 16px;
+  color: #E3DDD5;
+  background-color: #575551;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 300px; /* Largura máxima do botão */
+}
+
+.register-box button:hover {
+  background-color: #444;
+}
+
+.register-box .error-message,
+.register-box .success-message {
+  margin-bottom: 15px;
+  text-align: center; /* Centraliza o texto das mensagens */
+}
