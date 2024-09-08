@@ -18,10 +18,7 @@ const Register = () => {
             const userData = await loginUser(username, password);
             setSuccess('Conta criada com sucesso e você está logado!');
 
-            // Redireciona para a página de perfil
             navigate('/perfil');
-
-            // Recarrega a página
             window.location.reload();
 
         } catch (err) {

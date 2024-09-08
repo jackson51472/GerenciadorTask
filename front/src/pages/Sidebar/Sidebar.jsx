@@ -29,12 +29,14 @@ const Sidebar = () => {
                         {!isCollapsed && "Home"}
                     </Link>
                 </li>
-                <li>
-                    <Link to="/tarefas">
-                        <FiList className="icon" />
-                        {!isCollapsed && "Tarefas"}
-                    </Link>
-                </li>
+                {user && (
+                    <li>
+                        <Link to="/tarefa">
+                            <FiList className="icon" />
+                            {!isCollapsed && "Tarefas"}
+                        </Link>
+                    </li>
+                )}
                 {!user ? (
                     <li>
                         <Link to="/login">

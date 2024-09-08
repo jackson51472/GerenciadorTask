@@ -1,0 +1,66 @@
+/* CriarTask.scss */
+
+.tasks-page {
+  padding: 20px;
+}
+
+.task-form-container {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.task-form-container h2 {
+  margin-top: 0;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #0984e3;
+  color: #E3DDD5;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #074a8b;
+}
+
+.task-list {
+  margin-top: 20px;
+}
+
+.task-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.task-list ul li {
+  border-bottom: 1px solid #dddddd;
+  padding: 10px 0;
+}
+
+.task-list ul li:last-child {
+  border-bottom: none;
+}

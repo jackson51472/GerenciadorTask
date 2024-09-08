@@ -6,8 +6,10 @@ import React from 'react';
 import RightUser from './RightUser/RightUser';
 import Account from "./Account/Account";
 import {getStoredUser} from "../services/APIService";
-import {ToastContainer} from "react-toastify";
 import Home from "./Home/Home";
+import CriarTask from "./TasksPage/CriarTask/CriarTask";
+import './App.scss';
+import TaskPage from "./TasksPage/TaskPage";
 
 const App = () => {
 
@@ -25,6 +27,9 @@ const App = () => {
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/perfil" element={<Account />} />
+                        <Route path="/tarefa" element={<TaskPage />} />
+                        <Route path="/adicionar-tarefa" element={<CriarTask />} />
+                        <Route path="/editar-tarefa" element={<CriarTask />} />
                     </Routes>
                 </div>
             </div>

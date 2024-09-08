@@ -3,13 +3,12 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #E3DDD5; /* Cor de fundo padrão */
 }
 
 .login-box {
-  background-color: #D7D2CB; /* Cor de fundo da caixa */
-  border: 2px solid #BDB8B1; /* Cor da borda */
-  border-radius: 10px; /* Bordas arredondadas */
+  background-color: #D7D2CB;
+  border: 2px solid #BDB8B1;
+  border-radius: 10px;
   padding: 20px;
   box-shadow: -16px 31px 24px 0px rgba(0, 0, 0, 0.27);
   width: 100%;
@@ -44,7 +43,7 @@
 .login-box .button-container {
   display: flex;
   justify-content: space-between;
-  gap: 10px; /* Espaçamento entre os botões */
+  gap: 10px;
 }
 
 .login-box button {

@@ -21,12 +21,16 @@ export class AuthService {
 
   async signIn(username: string, password: string): Promise<AuthResponseDto> {
     const foundUser = await this.usersService.findByUserName(username);
-    if (!foundUser || !bcryptCompareSync(password, foundUser.password)) {
-      throw new UnauthorizedException();
+
+    if (!foundUser) {
+      throw new UnauthorizedException('Usuário não encontrado');
+    }
+
+    if (!bcryptCompareSync(password, foundUser.password)) {
+      throw new UnauthorizedException('Senha inválida');
     }
 
     const payload = { sub: foundUser.id, username: foundUser.username };
-
     const token = this.jwtService.sign(payload);
     return { token, expiresIn: this.jwtExpirationTimeInSeconds };
   }

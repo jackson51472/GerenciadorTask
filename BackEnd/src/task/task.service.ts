@@ -16,7 +16,7 @@ export class TaskService {
       title: task.title,
       description: task.description,
       expirationDate: task.expirationDate,
-      status: TaskStatusEnum.TO_DO,
+      status: task.status || TaskStatusEnum.TO_DO,
       user: task.user,
     };
 

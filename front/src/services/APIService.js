@@ -1,9 +1,12 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL;
 
 const apiClient = axios.create({
-    baseURL: API_URL,
+    baseURL: process.env.REACT_APP_API_URL,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    },
 });
 
 const getUsers = async () => {
@@ -60,20 +63,39 @@ const loginUser = async (username, password) => {
     try {
         const response = await apiClient.post('/auth/login', { username, password });
 
+        const { token } = response.data;
+
+        if (!token) {
+            throw new Error('Token não recebido do servidor.');
+        }
+
+        localStorage.setItem('token', token);
+
         const userData = {
             username,
             ...response.data
         };
-
         localStorage.setItem('user', JSON.stringify(userData));
 
         return userData;
     } catch (error) {
-        console.error('Erro ao fazer login:', error);
-        throw error;
+        // Adicione informações detalhadas do erro
+        console.error('Erro ao fazer login:', {
+            message: error.message,
+            response: error.response ? {
+                status: error.response.status,
+                data: error.response.data,
+            } : undefined,
+            request: error.request,
+            stack: error.stack,
+        });
+
+        // Mostre uma mensagem amigável para o usuário, se necessário
+        alert('Houve um problema ao tentar fazer login. Por favor, tente novamente mais tarde.');
+
+        throw error; // Re-throws error to allow further handling
     }
 };
-
 
 
 const logoutUser = () => {
@@ -100,7 +122,20 @@ const getStoredUser = () => {
     }
 };
 
+
+const createTask = async (taskData) => {
+    try {
+        console.log('Criando tarefa com dados:', taskData);
+        const response = await apiClient.post('/task', taskData);
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao adicionar tarefa:', error);
+        throw error;
+    }
+};
+
 export {
+    createTask,
     getUsers,
     getUserById,
     createUser,

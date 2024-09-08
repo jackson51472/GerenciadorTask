@@ -1,0 +1,32 @@
+/* src/components/TasksPage/TasksPage.scss */
+
+.tasks-page {
+  margin-right: 220px; /* Ajuste para evitar sobreposição pela navbar */
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.task-list-container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-list {
+  margin-top: 20px;
+}
+
+.task-item {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.task-item h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.task-item p {
+  margin: 5px 0;
+}
