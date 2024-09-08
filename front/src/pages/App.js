@@ -10,6 +10,7 @@ import Home from "./Home/Home";
 import CriarTask from "./TasksPage/CriarTask/CriarTask";
 import './App.scss';
 import TaskPage from "./TasksPage/TaskPage";
+import EditTaskPage from "./TasksPage/EditTaskPage/EditTaskPage";
 
 const App = () => {
 
@@ -30,6 +31,7 @@ const App = () => {
                         <Route path="/tarefa" element={<TaskPage />} />
                         <Route path="/adicionar-tarefa" element={<CriarTask />} />
                         <Route path="/editar-tarefa" element={<CriarTask />} />
+                        <Route path="/task/:id" element={<EditTaskPage />} />
                     </Routes>
                 </div>
             </div>

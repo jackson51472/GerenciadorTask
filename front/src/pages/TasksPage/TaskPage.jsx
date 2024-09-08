@@ -6,7 +6,8 @@ import './TaskPage.scss';
 
 const TaskPage = () => {
     const [tasks, setTasks] = useState([]);
-    const [filter, setFilter] = useState('ALL'); // Estado para o filtro
+    const [filter, setFilter] = useState('ALL');
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         fetchTasks();
@@ -39,8 +40,9 @@ const TaskPage = () => {
         }
     };
 
-    // Filtrar as tarefas com base no status selecionado
-    const filteredTasks = filter === 'ALL' ? tasks : tasks.filter(task => task.status === mapStatus(filter));
+    const filteredTasks = tasks
+        .filter(task => filter === 'ALL' || task.status === mapStatus(filter))
+        .filter(task => task.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
     return (
         <div className="tasks-page">
@@ -48,19 +50,31 @@ const TaskPage = () => {
             <div className="task-list-container">
                 <h1>Lista de Tarefas</h1>
 
-                {/* Componente de filtro */}
-                <div className="task-filter">
-                    <label htmlFor="status-filter">Filtrar por status:</label>
-                    <select
-                        id="status-filter"
-                        value={filter}
-                        onChange={(e) => setFilter(e.target.value)}
-                    >
-                        <option value="ALL">Todos</option>
-                        <option value="TO_DO">Listar para começar</option>
-                        <option value="IN_PROGRESS">Em progresso</option>
-                        <option value="DONE">Terminado</option>
-                    </select>
+                <div className="task-filter-container">
+                    <div className="task-filter">
+                        <label htmlFor="status-filter">Filtrar por status:</label>
+                        <select
+                            id="status-filter"
+                            value={filter}
+                            onChange={(e) => setFilter(e.target.value)}
+                        >
+                            <option value="ALL">Todos</option>
+                            <option value="TO_DO">Listar para começar</option>
+                            <option value="IN_PROGRESS">Em progresso</option>
+                            <option value="DONE">Terminado</option>
+                        </select>
+                    </div>
+
+                    <div className="task-search">
+                        <label htmlFor="search"></label>
+                        <input
+                            id="search"
+                            type="text"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            placeholder="Buscar tarefas"
+                        />
+                    </div>
                 </div>
 
                 <div className="task-list">

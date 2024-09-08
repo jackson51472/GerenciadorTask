@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const apiClient = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
@@ -9,6 +8,7 @@ const apiClient = axios.create({
     },
 });
 
+// Usuários
 const getUsers = async () => {
     try {
         const response = await apiClient.get('/users');
@@ -37,7 +37,7 @@ const createUser = async (userData) => {
         console.error('Erro ao criar usuário:', error);
         throw error;
     }
-}
+};
 
 const updateUser = async (id, userData) => {
     try {
@@ -59,10 +59,10 @@ const deleteUser = async (id) => {
     }
 };
 
+// Autenticação
 const loginUser = async (username, password) => {
     try {
         const response = await apiClient.post('/auth/login', { username, password });
-
         const { token } = response.data;
 
         if (!token) {
@@ -79,7 +79,6 @@ const loginUser = async (username, password) => {
 
         return userData;
     } catch (error) {
-        // Adicione informações detalhadas do erro
         console.error('Erro ao fazer login:', {
             message: error.message,
             response: error.response ? {
@@ -89,14 +88,10 @@ const loginUser = async (username, password) => {
             request: error.request,
             stack: error.stack,
         });
-
-        // Mostre uma mensagem amigável para o usuário, se necessário
         alert('Houve um problema ao tentar fazer login. Por favor, tente novamente mais tarde.');
-
-        throw error; // Re-throws error to allow further handling
+        throw error;
     }
 };
-
 
 const logoutUser = () => {
     localStorage.removeItem('user');
@@ -122,7 +117,7 @@ const getStoredUser = () => {
     }
 };
 
-
+// Tarefas
 const createTask = async (taskData) => {
     try {
         console.log('Criando tarefa com dados:', taskData);
@@ -144,10 +139,32 @@ const getTasks = async () => {
     }
 };
 
+// Novas funções para tarefas
+const getTaskById = async (id) => {
+    try {
+        const response = await apiClient.get(`/task/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error(`Erro ao buscar tarefa com ID ${id}:`, error);
+        throw error;
+    }
+};
+
+const updateTask = async (id, taskData) => {
+    try {
+        const response = await apiClient.put(`/task/${id}`, taskData);
+        return response.data;
+    } catch (error) {
+        console.error(`Erro ao atualizar tarefa com ID ${id}:`, error);
+        throw error;
+    }
+};
 
 export {
     getTasks,
     createTask,
+    getTaskById,
+    updateTask,
     getUsers,
     getUserById,
     createUser,

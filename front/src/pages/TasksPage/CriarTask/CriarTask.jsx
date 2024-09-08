@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { createTask } from '../../../services/APIService'; // Verifique o caminho correto para o APIService
-import TasksNavbar from "../TaskNavBar/TasksNavbar";
 import './CriarTask.scss';
+import { useNavigate } from 'react-router-dom';
+import TasksNavbar from "../TaskNavBar/TasksNavbar";
 
 const CriarTask = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('TO_DO'); // Valor inicial
     const [expirationDate, setExpirationDate] = useState('');
+    const navigate = useNavigate();
 
     const handleAddTask = async (e) => {
         e.preventDefault();
@@ -19,11 +21,13 @@ const CriarTask = () => {
                 status,
                 expirationDate
             });
+            // Limpar o formulário após sucesso
             setTitle('');
             setDescription('');
             setStatus('TO_DO');
             setExpirationDate('');
             alert('Tarefa adicionada com sucesso!');
+            navigate('/tasks'); // Redireciona para a lista de tarefas após a criação
         } catch (error) {
             const token = localStorage.getItem('token');
             console.log('Token armazenado:', token);
@@ -36,54 +40,55 @@ const CriarTask = () => {
         }
     };
 
-
     return (
-        <div className="tasks-page">
+        <div className="edit-task-page">
             <TasksNavbar />
-            <h1>Criar Tarefas</h1>
+            <h1>Criar Tarefa</h1>
             <div className="task-form-container">
-                <h2>Adicionar Nova Tarefa</h2>
                 <form onSubmit={handleAddTask}>
-                    <div className="form-group">
-                        <label>Título:</label>
+                    <label>
+                        Título:
                         <input
                             type="text"
+                            name="title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             required
                         />
-                    </div>
-                    <div className="form-group">
-                        <label>Descrição:</label>
-                        <input
-                            type="text"
+                    </label>
+                    <label>
+                        Descrição:
+                        <textarea
+                            name="description"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             required
                         />
-                    </div>
-                    <div className="form-group">
-                        <label>Status:</label>
+                    </label>
+                    <label>
+                        Status:
                         <select
+                            name="status"
                             value={status}
                             onChange={(e) => setStatus(e.target.value)}
                             required
                         >
-                            <option value="TO_DO">A Fazer (TO_DO)</option>
-                            <option value='IN_PROGRESS'>Em Progresso (IN_PROGRESS)</option>
-                            <option value='DONE'>Concluída (DONE)</option>
+                            <option value="TO_DO">Listar para começar</option>
+                            <option value="IN_PROGRESS">Em progresso</option>
+                            <option value="DONE">Terminado</option>
                         </select>
-                    </div>
-                    <div className="form-group">
-                        <label>Data de Expiração:</label>
+                    </label>
+                    <label>
+                        Data de Expiração:
                         <input
                             type="datetime-local"
+                            name="expirationDate"
                             value={expirationDate}
                             onChange={(e) => setExpirationDate(e.target.value)}
                             required
                         />
-                    </div>
-                    <button type="submit">Adicionar Tarefa</button>
+                    </label>
+                    <button type="submit">Salvar</button>
                 </form>
             </div>
         </div>

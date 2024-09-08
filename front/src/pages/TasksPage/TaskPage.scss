@@ -30,9 +30,14 @@
 .task-item p {
   margin: 5px 0;
 }
+.task-filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
 .task-filter {
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
 }
@@ -50,3 +55,20 @@
   background-color: #fff;
 }
 
+.task-search {
+  display: flex;
+  align-items: center;
+}
+
+.task-search label {
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.task-search input {
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
