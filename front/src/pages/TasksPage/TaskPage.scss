@@ -30,3 +30,23 @@
 .task-item p {
   margin: 5px 0;
 }
+
+.task-filter {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.task-filter label {
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.task-filter select {
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+

@@ -134,7 +134,19 @@ const createTask = async (taskData) => {
     }
 };
 
+const getTasks = async () => {
+    try {
+        const response = await apiClient.get('/task');
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao buscar tarefas:', error);
+        throw error;
+    }
+};
+
+
 export {
+    getTasks,
     createTask,
     getUsers,
     getUserById,
