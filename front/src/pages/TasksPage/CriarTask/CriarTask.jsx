@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createTask } from '../../../services/APIService'; // Verifique o caminho correto para o APIService
+import { createTask } from '../../../services/APIService';
 import './CriarTask.scss';
 import { useNavigate } from 'react-router-dom';
 import TasksNavbar from "../TaskNavBar/TasksNavbar";
@@ -7,27 +7,27 @@ import TasksNavbar from "../TaskNavBar/TasksNavbar";
 const CriarTask = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [status, setStatus] = useState('TO_DO'); // Valor inicial
+    const [status, setStatus] = useState('TO_DO');
     const [expirationDate, setExpirationDate] = useState('');
     const navigate = useNavigate();
 
     const handleAddTask = async (e) => {
         e.preventDefault();
         try {
-            console.log('Status selecionado:', status); // Verifique o valor do status aqui
+            console.log('Status selecionado:', status);
             await createTask({
                 title,
                 description,
                 status,
                 expirationDate
             });
-            // Limpar o formulário após sucesso
+
             setTitle('');
             setDescription('');
             setStatus('TO_DO');
             setExpirationDate('');
             alert('Tarefa adicionada com sucesso!');
-            navigate('/tasks'); // Redireciona para a lista de tarefas após a criação
+            navigate('/tasks');
         } catch (error) {
             const token = localStorage.getItem('token');
             console.log('Token armazenado:', token);

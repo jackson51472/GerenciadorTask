@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getTasks } from '../../services/APIService';  // Importe a função getTasks
-import TasksNavbar from './TaskNavBar/TasksNavbar';  // Importa o componente TasksNavbar
-import TaskItem from './TaskItem/TaskItem'; // Certifique-se de que o caminho está correto
+import { getTasks } from '../../services/APIService';
+import TasksNavbar from './TaskNavBar/TasksNavbar';
+import TaskItem from './TaskItem/TaskItem';
 import './TaskPage.scss';
 
 const TaskPage = () => {

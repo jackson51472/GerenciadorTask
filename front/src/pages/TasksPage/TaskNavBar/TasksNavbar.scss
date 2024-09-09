@@ -1,12 +1,10 @@
-/* src/components/TasksNavbar/TasksNavbar.scss */
 
-/* Estilo para a navbar centralizada no topo da tela */
 .tasks-navbar {
   position: fixed;
-  top: 0; /* Posiciona no topo da tela */
-  left: 50%; /* Centraliza horizontalmente */
-  transform: translateX(-50%); /* Ajusta a posição para o centro exato */
-  background-color: #575551; /* Cor sólida de fundo */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #575551;
   color: #E3DDD5;
   padding: 10px;
   display: flex;
@@ -15,11 +13,11 @@
   border-radius: 0px 0px 200px 200px;
   border: 0px solid #000000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Assegura que a navbar esteja acima de outros elementos */
-  width: 100%; /* Ajuste conforme necessário */
-  height: auto; /* Ajusta a altura conforme o conteúdo */
-  max-width: 800px; /* Define uma largura máxima */
-  justify-content: space-around; /* Espaça os itens uniformemente */
+  z-index: 1000;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  justify-content: space-around;
 }
 
 .tasks-navbar a {

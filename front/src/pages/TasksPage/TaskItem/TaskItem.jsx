@@ -1,12 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Adiciona a importação do useNavigate
-import './TaskItem.scss'; // Certifique-se de que o caminho está correto
+import { useNavigate } from 'react-router-dom';
+import './TaskItem.scss';
 
 const TaskItem = ({ task }) => {
-    const navigate = useNavigate(); // Inicializa o hook useNavigate
+    const navigate = useNavigate();
 
     const handleEdit = () => {
-        navigate(`/task/${task.id}`); // Redireciona para a página de edição
+        navigate(`/task/${task.id}`);
     };
 
     const formatStatus = (status) => {

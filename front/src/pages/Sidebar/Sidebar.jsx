@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getStoredUser } from '../../services/APIService';
-import { FiLogIn, FiUser, FiHome, FiList, FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';  // Adicione os ícones de Home e Tarefas
+import { FiLogIn, FiUser, FiHome, FiList, FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';
 import './Sidebar.scss';
 
 const Sidebar = () => {

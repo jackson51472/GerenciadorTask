@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #E3DDD5, #575551); /* Gradiente de fundo */
+  background: linear-gradient(135deg, #E3DDD5, #575551);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,11 +15,11 @@ body {
 .main-content {
   flex: 1;
   padding: 20px;
-  margin-left: 125px; /* Ajuste conforme o tamanho da Sidebar */
-  transition: margin-left 0.3s; /* Transição suave ao colapsar a Sidebar */
+  margin-left: 125px;
+  transition: margin-left 0.3s;
 }
 
-/* Ajuste quando a Sidebar está colapsada */
+
 .sidebar.collapsed ~ .main-content {
-  margin-left: 50px; /* Ajuste conforme o tamanho da Sidebar colapsada */
+  margin-left: 50px;
 }

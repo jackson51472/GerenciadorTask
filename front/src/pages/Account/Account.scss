@@ -1,11 +1,11 @@
-/* src/pages/Account/Account.scss */
 .account-container {
+  width: 80%;
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -15,34 +15,81 @@ h1 {
 
 .account-info {
   margin-bottom: 20px;
-  p {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.account-info p {
+  margin: 10px 0;
 }
 
 .account-actions {
   display: flex;
-  justify-content: space-between;
-  button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+  flex-direction: column;
+  align-items: center;
+}
 
-  .edit-button {
-    background-color: #0984e3;
-    color: white;
-  }
+.edit-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px 0;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  .change-password-button {
-    background-color: #e17055;
-    color: white;
-  }
+.form-group {
+  margin-bottom: 15px;
+}
 
-  button:hover {
-    opacity: 0.9;
-  }
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.edit-but {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.save-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.cancel-button {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.edit-button, .delete-button, .save-button, .cancel-button {
+  font-size: 16px;
+}
+
+button:hover {
+  opacity: 0.9;
 }

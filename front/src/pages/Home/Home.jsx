@@ -1,7 +1,6 @@
-// src/pages/Home.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Home.scss'; // Importa o arquivo de estilos SCSS
+import './Home.scss';
 
 const Home = () => {
     return (

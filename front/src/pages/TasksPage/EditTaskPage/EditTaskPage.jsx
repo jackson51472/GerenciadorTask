@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getTaskById, updateTask } from '../../../services/APIService'; // Verifique se o caminho está correto
+import { getTaskById, updateTask } from '../../../services/APIService';
 import './EditTaskPage.scss';
 
 const EditTaskPage = () => {
-    const { id } = useParams(); // Obtém o ID da tarefa da URL
+    const { id } = useParams();
     const navigate = useNavigate();
     const [task, setTask] = useState({ title: '', description: '', status: '', expirationDate: '' });
 
@@ -32,7 +32,7 @@ const EditTaskPage = () => {
         e.preventDefault();
         try {
             await updateTask(id, task);
-            navigate('/tasks'); // Redireciona para a lista de tarefas após a edição
+            navigate('/tasks');
         } catch (error) {
             console.error('Erro ao atualizar tarefa:', error);
         }

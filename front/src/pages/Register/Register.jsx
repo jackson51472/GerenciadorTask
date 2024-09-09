@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createUser, loginUser } from '../../services/APIService';
-import { useNavigate } from 'react-router-dom'; // Importe useNavigate
+import { useNavigate } from 'react-router-dom';
 import './Register.scss';
 
 const Register = () => {
@@ -8,7 +8,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-    const navigate = useNavigate(); // Inicialize useNavigate
+    const navigate = useNavigate();
 
     const handleRegister = async (e) => {
         e.preventDefault();

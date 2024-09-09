@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { loginUser } from '../../services/APIService'; // Importe a função loginUser
+import { loginUser } from '../../services/APIService';
 import './Login.scss';
 
 const Login = () => {
@@ -13,9 +13,8 @@ const Login = () => {
         try {
             await loginUser(username, password);
 
-            // Recarrega a página e redireciona para a página de perfil
             window.location.reload();
-            window.location.href = '/perfil'; // Redireciona para a página de perfil
+            window.location.href = '/perfil';
 
         } catch (err) {
             if (err.response && err.response.data.message) {
@@ -48,7 +47,7 @@ const Login = () => {
                     {error && <p className="error">{error}</p>}
                     <div className="button-container">
                         <button type="submit">Entrar</button>
-                        <a href="/register" className="register-button">Criar uma conta</a> {/* Botão estilizado */}
+                        <a href="/register" className="register-button">Criar uma conta</a>
                     </div>
                 </form>
             </div>

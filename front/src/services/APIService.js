@@ -9,26 +9,6 @@ const apiClient = axios.create({
 });
 
 // Usuários
-const getUsers = async () => {
-    try {
-        const response = await apiClient.get('/users');
-        return response.data;
-    } catch (error) {
-        console.error('Erro ao buscar usuários:', error);
-        throw error;
-    }
-};
-
-const getUserById = async (id) => {
-    try {
-        const response = await apiClient.get(`/users/${id}`);
-        return response.data;
-    } catch (error) {
-        console.error(`Erro ao buscar usuário com ID ${id}:`, error);
-        throw error;
-    }
-};
-
 const createUser = async (userData) => {
     try {
         const response = await apiClient.post('/users', userData);
@@ -39,31 +19,47 @@ const createUser = async (userData) => {
     }
 };
 
-const updateUser = async (id, userData) => {
+const updateUser = async (userData) => {
+    console.log(localStorage.getItem('user'));
+
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userId = user ? user.id : null;
+
+    if (!userId) {
+        throw new Error('ID do usuário não encontrado no localStorage.');
+    }
+
     try {
-        const response = await apiClient.put(`/users/${id}`, userData);
+        const response = await apiClient.put(`/users/${userId}`, userData);
         return response.data;
     } catch (error) {
-        console.error(`Erro ao atualizar usuário com ID ${id}:`, error);
+        console.error(`Erro ao atualizar usuário com ID ${userId}:`, error);
         throw error;
     }
 };
 
-const deleteUser = async (id) => {
+const deleteUser = async () => {
+    console.log(localStorage.getItem('user'));
+
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userId = user ? user.id : null;
+
     try {
-        await apiClient.delete(`/users/${id}`);
-        console.log(`Usuário com ID ${id} excluído com sucesso.`);
+        await apiClient.delete(`/users/${userId}`);
+        console.log(`Usuário com ID ${userId} excluído com sucesso.`);
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
     } catch (error) {
-        console.error(`Erro ao excluir usuário com ID ${id}:`, error);
+        console.error(`Erro ao excluir usuário com ID ${userId}:`, error);
         throw error;
     }
 };
 
-// Autenticação
 const loginUser = async (username, password) => {
     try {
         const response = await apiClient.post('/auth/login', { username, password });
-        const { token } = response.data;
+
+        const { token, id } = response.data;
 
         if (!token) {
             throw new Error('Token não recebido do servidor.');
@@ -73,28 +69,25 @@ const loginUser = async (username, password) => {
 
         const userData = {
             username,
+            id,
             ...response.data
         };
+
         localStorage.setItem('user', JSON.stringify(userData));
 
         return userData;
     } catch (error) {
-        console.error('Erro ao fazer login:', {
-            message: error.message,
-            response: error.response ? {
-                status: error.response.status,
-                data: error.response.data,
-            } : undefined,
-            request: error.request,
-            stack: error.stack,
-        });
+        console.error('Erro ao fazer login:', error);
         alert('Houve um problema ao tentar fazer login. Por favor, tente novamente mais tarde.');
         throw error;
     }
 };
 
+
 const logoutUser = () => {
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    localStorage.removeItem('id')
 };
 
 const getStoredUser = () => {
@@ -139,7 +132,6 @@ const getTasks = async () => {
     }
 };
 
-// Novas funções para tarefas
 const getTaskById = async (id) => {
     try {
         const response = await apiClient.get(`/task/${id}`);
@@ -165,8 +157,6 @@ export {
     createTask,
     getTaskById,
     updateTask,
-    getUsers,
-    getUserById,
     createUser,
     updateUser,
     deleteUser,
