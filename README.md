@@ -39,14 +39,14 @@ Este é um gerenciador de tarefas simples que permite aos usuários criar, edita
 2. Instale as dependências do front-end:
     Navegue até a pasta do front e execute:
     ```bash
-    cd front-end
+    cd front
     npm install
     ```
 
 3. Instale as dependências do back-end:
     Navegue até a pasta do BackEnd e execute:
     ```bash
-    cd ../back-end
+    cd ../BackEnd
     npm install
     ```
 
@@ -58,21 +58,19 @@ Este é um gerenciador de tarefas simples que permite aos usuários criar, edita
         DB_PORT=3306
         DB_USERNAME=seu_usuario
         DB_PASSWORD=sua_senha
-        DB_NAME=nome_do_banco_de_dados
+        DB_DATABASE=nome_do_banco_de_dados
         JWT_SECRET=sua_chave_secreta
         JWT_EXPIRATION_TIME=3600
         ```
 
 5. Execute as migrações e inicie o back-end:
     ```bash
-    cd ../back-end
-    npm run migration:run
-    npm run start
+        npm run start
     ```
 
 6. Inicie o front-end:
     ```bash
-    cd ../front-end
+    cd ../front
     npm start
     ```
 
