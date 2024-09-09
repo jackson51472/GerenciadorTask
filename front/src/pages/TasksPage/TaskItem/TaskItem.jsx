@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './TaskItem.scss';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa'; // Importando ícones de seta
 
 const TaskItem = ({ task }) => {
+    const [showDescription, setShowDescription] = useState(false);
     const navigate = useNavigate();
 
     const handleEdit = () => {
-        navigate(`/task/${task.id}`);
+        if (task && task.id) {
+            navigate(`/task/${task.id}`);
+        } else {
+            console.error('ID da tarefa não disponível.');
+        }
+    };
+
+    const toggleDescription = () => {
+        setShowDescription(!showDescription);
     };
 
     const formatStatus = (status) => {
@@ -30,6 +40,15 @@ const TaskItem = ({ task }) => {
                 <h2 className="task-title">{task.title}</h2>
                 <p><strong>Status:</strong> {formatStatus(task.status)}</p>
                 <p><strong>Data de Expiração:</strong> {new Date(task.expirationDate).toLocaleString()}</p>
+                <div className="task-toggle" onClick={toggleDescription}>
+                    {showDescription ? <FaChevronUp /> : <FaChevronDown />}
+                    <span>{showDescription ? 'Menos' : 'Mais'}</span>
+                </div>
+                {showDescription && (
+                    <div className="task-description">
+                        <p><strong>Descrição:</strong> {task.description}</p>
+                    </div>
+                )}
             </div>
         </li>
     );

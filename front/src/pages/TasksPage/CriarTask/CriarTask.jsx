@@ -26,7 +26,6 @@ const CriarTask = () => {
             setDescription('');
             setStatus('TO_DO');
             setExpirationDate('');
-            alert('Tarefa adicionada com sucesso!');
             navigate('/tasks');
         } catch (error) {
             const token = localStorage.getItem('token');

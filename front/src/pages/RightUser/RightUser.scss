@@ -1,15 +1,20 @@
 .right-user {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  right: 0;
   display: flex;
   align-items: center;
   background-color: #D7D2CB;
   padding: 10px 15px;
-  border-radius: 152px 0px 153px 19px;
-  box-shadow: -16px 31px 24px 0px rgba(0, 0, 0, 0.27);
+  border-radius: 0px 0px 0px 200px;
+  -moz-border-radius: 0px 0px 0px 200px;
+  -webkit-border-radius: 0px 0px 0px 200px;
+
+  -webkit-box-shadow: -14px 25px 31px 0px rgba(0,0,0,0.41);
+  -moz-box-shadow: -14px 25px 31px 0px rgba(0,0,0,0.41);
+  box-shadow: -14px 25px 31px 0px rgba(0,0,0,0.41);
+
   z-index: 1000;
-  border: 0.1px solid #000000;
+  border: 1px solid #000000;
 }
 
 .user-icon {

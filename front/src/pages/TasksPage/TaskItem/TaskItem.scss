@@ -1,48 +1,51 @@
 .task-item {
   position: relative;
-  padding: 15px;
-  margin-bottom: 10px;
+  list-style: none;
+  background-color: #E3DDD5;
+  padding: 20px;
   border-radius: 8px;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
 }
 
-.task-item-title,
-.task-item-status,
-.task-item-description,
-.task-item-expiration-date {
-  color: #000;
-}
-
-.task-item-title {
-  font-size: 1.5rem;
-}
-
-.task-item-status {
-  font-size: 1rem;
-}
-
-.task-item-description {
-  font-size: 1rem;
-}
-
-.task-item-expiration-date {
-  font-size: 0.875rem;
-}
 
 .edit-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #007bff;
+  top: 20px;
+  right: 20px;
+  background-color: #0984e3;
+  color: #fff;
   border: none;
-  color: white;
   padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s;
 }
 
 .edit-button:hover {
-  background-color: #0056b3;
+  background-color: #075aa8;
+}
+
+
+.task-details {
+  position: relative;
+}
+
+.task-toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 10px;
+  color: #0984e3;
+}
+
+.task-toggle span {
+  margin-left: 8px;
+}
+
+.task-description {
+  margin-top: 10px;
+  font-style: italic;
+  color: #2d3436;
 }

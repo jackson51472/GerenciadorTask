@@ -32,7 +32,7 @@ const Account = () => {
             setIsEditing(false);
         } catch (error) {
             console.error('Erro ao atualizar usuário:', error);
-            alert('Erro ao atualizar usuário. Tente novamente.');
+            alert('Erro ao atualizar usuário. \nMotivo do erro: Ainda não foi implementado o editor de user.');
         }
     };
 
@@ -42,7 +42,7 @@ const Account = () => {
             alert('Conta deletada com sucesso!');
         } catch (error) {
             console.error('Erro ao deletar usuário:', error);
-            alert('Erro ao deletar conta. Tente novamente.');
+            alert('Erro ao deletar conta. \nMotivo do erro: Ainda não foi implementado o delete user.');
         }
     };
 

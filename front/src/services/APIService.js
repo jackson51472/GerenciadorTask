@@ -78,7 +78,6 @@ const loginUser = async (username, password) => {
         return userData;
     } catch (error) {
         console.error('Erro ao fazer login:', error);
-        alert('Houve um problema ao tentar fazer login. Por favor, tente novamente mais tarde.');
         throw error;
     }
 };
