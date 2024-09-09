@@ -52,7 +52,7 @@ Este é um gerenciador de tarefas simples que permite aos usuários criar, edita
 
 4. Configure o banco de dados:
     - Crie um banco de dados MySQL para o projeto.
-    - Crie o arquivo `.env` na pasta do BackEnd com as seguintes variáveis:
+    - Crie o arquivo `.env` dentro da pasta do BackEnd com as seguintes variáveis:
         ```plaintext
         DB_HOST=localhost
         DB_PORT=3306
