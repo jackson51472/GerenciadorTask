@@ -52,7 +52,7 @@ Este é um gerenciador de tarefas simples que permite aos usuários criar, edita
 
 4. Configure o banco de dados:
     - Crie um banco de dados MySQL para o projeto.
-    - Modifique o arquivo `.env` na pasta do BackEnd com as seguintes variáveis:
+    - Crie o arquivo `.env` na pasta do BackEnd com as seguintes variáveis:
         ```plaintext
         DB_HOST=localhost
         DB_PORT=3306
@@ -60,6 +60,7 @@ Este é um gerenciador de tarefas simples que permite aos usuários criar, edita
         DB_PASSWORD=sua_senha
         DB_NAME=nome_do_banco_de_dados
         JWT_SECRET=sua_chave_secreta
+        JWT_EXPIRATION_TIME=3600
         ```
 
 5. Execute as migrações e inicie o back-end:
