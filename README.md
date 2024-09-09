@@ -29,14 +29,6 @@ Este é um gerenciador de tarefas simples que permite aos usuários criar, edita
 ### Pré-requisitos
 - Node.js
 - MySQL
-- **Create React App** (para gerenciamento de projetos React):
-    ```bash
-    npm install -g create-react-app
-    ```
-- **NestJS CLI** (para gerenciamento de projetos NestJS):
-    ```bash
-    npm install -g @nestjs/cli
-    ```
 
 ### Configuração do Projeto
 1. Clone o repositório:
